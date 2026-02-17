@@ -24,6 +24,8 @@
       min-height: 100vh;
       background: repeating-linear-gradient(
         90deg,
+        var(--purple),
+        var(--purple) 40px,
         var(--light-pink),
         var(--light-pink) 40px,
         var(--white) 40px,
@@ -162,7 +164,8 @@
     });
 
     yesBtn.addEventListener("click", () => {
-      mainImage.src = "images/V_Day.jpg";
+      mainImage.src =
+ "images/V_Day.jpg";
       mainText.textContent = "YAY!! 💘 Happy Valentine’s Day! 💖";
       noBtn.classList.add("hidden");
       yesBtn.style.transform = "scale(1.1)";
