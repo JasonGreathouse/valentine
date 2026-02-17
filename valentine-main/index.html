@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine 💖</title>
+
+  <style>
+    :root {
+      --pink: #ff7eb9;
+      --light-pink: #ffd6e8;
+      --purple: #BF40BF;
+      --white: #ffffff;
+      --text: #b30059;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--purple),
+        var(--purple) 40px,
+        var(--white) 40px,
+        var(--white) 80px
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 24px 20px 28px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      max-width: 80%;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+
+    h1 {
+      color: var(--text);
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    #yesBtn {
+      background: var(--pink);
+      color: white;
+    }
+
+    #noBtn {
+      background: #ccc;
+      color: #333;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ===== Heart Confetti ===== */
+.heart {
+  position: absolute;
+  bottom: -30px;
+  pointer-events: none;
+  opacity: 0.85;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <img
+      id="mainImage"
+      src="images/heart_img.jpg"
+      alt="Valentine GIF"
+    />
+
+    <h1 id="mainText">Meghan, Will you be my Valentine? 💖</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💕</button>
+      <button id="noBtn">No chance 😅</button>
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const mainImage = document.getElementById("mainImage");
+    const mainText = document.getElementById("mainText");
+    const heartEmojis = [
+  "💖",
+  "💕",
+  "💗",
+  "❤️",
+  "💘",
+  "❤️‍🔥" // heart on fire 🔥
+];
+
+
+    let scale = 1;
+
+    noBtn.addEventListener("click", () => {
+      scale += 0.25;
+      yesBtn.style.transform = `scale(${scale})`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      mainImage.src =
+ "images/V_Day.jpg";
+      mainText.textContent = "YAY!! 💘 Happy Valentine’s Day! 💖";
+      noBtn.classList.add("hidden");
+      yesBtn.style.transform = "scale(1.1)";
+      stopHearts();       // stop gentle hearts
+startHearts(80);  // LOTS of hearts 💥💖
+
+    });
+
+    let heartInterval = null;
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.textContent =
+  heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+
+  // Keep hearts in left/right margins only
+  const side = Math.random() < 0.5 ? "left" : "right";
+  const offset = Math.random() * 40 + 6;
+
+  if (side === "left") {
+    heart.style.left = `${offset}px`;
+  } else {
+    heart.style.right = `${offset}px`;
+  }
+
+  heart.style.fontSize = `${Math.random() * 14 + 14}px`;
+  heart.style.animationDuration = `${Math.random() * 4 + 4}s`;
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 9000);
+}
+
+function startHearts(rate = 1000) {
+  if (heartInterval) return;
+  heartInterval = setInterval(createHeart, rate);
+}
+
+function stopHearts() {
+  clearInterval(heartInterval);
+  heartInterval = null;
+}
+startHearts(1200);
+
+  </script>
+</body>
+</html>
+
+
+
+
+
