@@ -1,227 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Be My Valentine 💖</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account</title>
 
-  <style>
-    :root {
-      --pink: #ff7eb9;
-      --light-pink: #ffd6e8;
-      --purple: #BF40BF;
-      --white: #ffffff;
-      --text: #b30059;
-      --black: #000000;
-    }
+<style>
 
-    * {
-      box-sizing: border-box;
-      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--purple),
-        var(--purple) 40px,
-        var(--black) 40px,
-        var(--black) 80px
-        var(--white) 40px,
-        var(--white) 80px
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      padding: 24px 20px 28px;
-      width: 90%;
-      max-width: 420px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-
-    .card img {
-      max-width: 80%;
-      height: auto;
-      margin-bottom: 20px;
-      border-radius: 12px;
-    }
-
-    h1 {
-      color: var(--text);
-      font-size: 1.8rem;
-      margin-bottom: 24px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    button {
-      border: none;
-      border-radius: 999px;
-      padding: 14px 22px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    }
-
-    #yesBtn {
-      background: var(--pink);
-      color: white;
-    }
-
-    #noBtn {
-      background: #ccc;
-      color: #333;
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    /* ===== Heart Confetti ===== */
-.heart {
-  position: absolute;
-  bottom: -30px;
-  pointer-events: none;
-  opacity: 0.85;
-  animation-name: floatUp;
-  animation-timing-function: linear;
-  z-index: 1;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
 
-@keyframes floatUp {
-  from {
-    transform: translateY(0);
-    opacity: 0.85;
-  }
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
+body{
+background:linear-gradient(135deg,#0f172a,#020617);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
 }
 
+.container{
+width:100%;
+max-width:420px;
+padding:30px;
+}
 
-    @media (max-width: 400px) {
-      h1 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+.card{
+background:#111827;
+border-radius:16px;
+padding:35px;
+box-shadow:0 10px 40px rgba(0,0,0,.6);
+border:1px solid rgba(255,255,255,.05);
+}
+
+h1{
+text-align:center;
+margin-bottom:10px;
+font-size:28px;
+}
+
+.subtitle{
+text-align:center;
+margin-bottom:30px;
+color:#9ca3af;
+font-size:14px;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:6px;
+font-size:13px;
+color:#9ca3af;
+}
+
+input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #374151;
+background:#020617;
+color:white;
+font-size:14px;
+transition:.2s;
+}
+
+input:focus{
+outline:none;
+border-color:#6366f1;
+box-shadow:0 0 0 1px #6366f1;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+background:#6366f1;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
+margin-top:10px;
+}
+
+button:hover{
+background:#4f46e5;
+transform:scale(1.02);
+}
+
+.footer{
+margin-top:20px;
+text-align:center;
+font-size:13px;
+color:#9ca3af;
+}
+
+.footer a{
+color:#818cf8;
+text-decoration:none;
+}
+
+.footer a:hover{
+text-decoration:underline;
+}
+
+.status{
+margin-top:15px;
+text-align:center;
+font-size:13px;
+color:#10b981;
+display:none;
+}
+
+</style>
 </head>
 
 <body>
-  <div class="card">
-    <img
-      id="mainImage"
-      src="images/heart_img.jpg"
-      alt="Valentine GIF"
-    />
 
-    <h1 id="mainText">Meghan, Will you be my Valentine? 💖</h1>
+<div class="container">
 
-    <div class="buttons">
-      <button id="yesBtn">Yes 💕</button>
-      <button id="noBtn">No chance 😅</button>
-    </div>
-  </div>
+<div class="card">
 
-  <script>
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const mainImage = document.getElementById("mainImage");
-    const mainText = document.getElementById("mainText");
-    const heartEmojis = [
-  "💖",
-  "💕",
-  "💗",
-  "❤️",
-  "💘",
-  "❤️‍🔥" // heart on fire 🔥
-];
+<h1>Create Account</h1>
+<p class="subtitle">Sign up to get started</p>
 
+<form id="signupForm">
 
-    let scale = 1;
+<div class="input-group">
+<label>Username</label>
+<input type="text" id="username" required>
+</div>
 
-    noBtn.addEventListener("click", () => {
-      scale += 0.25;
-      yesBtn.style.transform = `scale(${scale})`;
-    });
+<div class="input-group">
+<label>Email</label>
+<input type="email" id="email" required>
+</div>
 
-    yesBtn.addEventListener("click", () => {
-      mainImage.src =
- "images/V_Day.jpg";
-      mainText.textContent = "YAY!! 💘 Happy Valentine’s Day! 💖";
-      noBtn.classList.add("hidden");
-      yesBtn.style.transform = "scale(1.1)";
-      stopHearts();       // stop gentle hearts
-startHearts(80);  // LOTS of hearts 💥💖
+<div class="input-group">
+<label>Password</label>
+<input type="password" id="password" required>
+</div>
 
-    });
+<div class="input-group">
+<label>Confirm Password</label>
+<input type="password" id="confirmPassword" required>
+</div>
 
-    let heartInterval = null;
+<button type="submit">Create Account</button>
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.textContent =
-  heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+</form>
 
+<div class="status" id="statusMessage">
+Account created successfully!
+</div>
 
-  // Keep hearts in left/right margins only
-  const side = Math.random() < 0.5 ? "left" : "right";
-  const offset = Math.random() * 40 + 6;
+<div class="footer">
+Already have an account? <a href="#">Log In</a>
+</div>
 
-  if (side === "left") {
-    heart.style.left = `${offset}px`;
-  } else {
-    heart.style.right = `${offset}px`;
-  }
+</div>
 
-  heart.style.fontSize = `${Math.random() * 14 + 14}px`;
-  heart.style.animationDuration = `${Math.random() * 4 + 4}s`;
+</div>
 
-  document.body.appendChild(heart);
+<script>
 
-  setTimeout(() => {
-    heart.remove();
-  }, 9000);
+const form = document.getElementById("signupForm");
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const username = document.getElementById("username").value;
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+const confirmPassword = document.getElementById("confirmPassword").value;
+
+if(password !== confirmPassword){
+alert("Passwords do not match");
+return;
 }
 
-function startHearts(rate = 1000) {
-  if (heartInterval) return;
-  heartInterval = setInterval(createHeart, rate);
-}
+/*
+THIS IS WHERE WE WILL LATER CALL YOUR
+CLOUDFLARE WORKER API
+WHICH WRITES TO testing_db
+*/
 
-function stopHearts() {
-  clearInterval(heartInterval);
-  heartInterval = null;
-}
-startHearts(1200);
+document.getElementById("statusMessage").style.display="block";
 
-  </script>
+});
+
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
