@@ -1,136 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Be My Valentine 💖</title>
-
-  <style>
-    :root {
-      --pink: #ff7eb9;
-      --light-pink: #ffd6e8;
-      --purple: #BF40BF;
-      --white: #ffffff;
-      --text: #b30059;
-      --black: #000000;
-    }
-
-    * {
-      box-sizing: border-box;
-      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--purple),
-        var(--purple) 40px,
-        var(--black) 40px,
-        var(--black) 80px
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      padding: 24px 20px 28px;
-      width: 90%;
-      max-width: 420px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-
-    .card img {
-      max-width: 80%;
-      height: auto;
-      margin-bottom: 20px;
-      border-radius: 12px;
-    }
-
-    h1 {
-      color: var(--text);
-      font-size: 1.8rem;
-      margin-bottom: 24px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    button {
-      border: none;
-      border-radius: 999px;
-      padding: 14px 22px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    }
-
-    #yesBtn {
-      background: var(--pink);
-      color: white;
-    }
-
-    #noBtn {
-      background: #ccc;
-      color: #333;
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    /* ===== Heart Confetti ===== */
-.heart {
-  position: absolute;
-  bottom: -30px;
-  pointer-events: none;
-  opacity: 0.85;
-  animation-name: floatUp;
-  animation-timing-function: linear;
-  z-index: 1;
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(0);
-    opacity: 0.85;
-  }
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
-}
-
-
-    @media (max-width: 400px) {
-      h1 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="card">
-    <img
-      id="mainImage"
-      src="images/heart_img.jpg"
-      alt="Valentine GIF"
-    />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account</title>
 
 <style>
 
@@ -272,4 +145,61 @@ display:none;
 <input type="email" id="email" required>
 </div>
 
+<div class="input-group">
+<label>Password</label>
+<input type="password" id="password" required>
+</div>
 
+<div class="input-group">
+<label>Confirm Password</label>
+<input type="password" id="confirmPassword" required>
+</div>
+
+<button type="submit">Create Account</button>
+
+</form>
+
+<div class="status" id="statusMessage">
+Account created successfully!
+</div>
+
+<div class="footer">
+Already have an account? <a href="#">Log In</a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("signupForm");
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const username = document.getElementById("username").value;
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+const confirmPassword = document.getElementById("confirmPassword").value;
+
+if(password !== confirmPassword){
+alert("Passwords do not match");
+return;
+}
+
+/*
+THIS IS WHERE WE WILL LATER CALL YOUR
+CLOUDFLARE WORKER API
+WHICH WRITES TO testing_db
+*/
+
+document.getElementById("statusMessage").style.display="block";
+
+});
+
+</script>
+
+</body>
+</html>
