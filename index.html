@@ -189,11 +189,25 @@ alert("Passwords do not match");
 return;
 }
 
-/*
-THIS IS WHERE WE WILL LATER CALL YOUR
-CLOUDFLARE WORKER API
-WHICH WRITES TO testing_db
-*/
+fetch("https://user-api.jason-greathouse.workers.dev/", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+username: username,
+email: email
+})
+})
+.then(response => response.json())
+.then(data => {
+
+document.getElementById("statusMessage").style.display = "block";
+
+})
+.catch(error => {
+console.error(error);
+});
 
 document.getElementById("statusMessage").style.display="block";
 
@@ -203,3 +217,4 @@ document.getElementById("statusMessage").style.display="block";
 
 </body>
 </html>
+
